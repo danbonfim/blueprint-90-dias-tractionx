@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRACTION X - Blueprint 90 Dias</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 4px solid #ff6b35;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 400;
+            opacity: 0.95;
+        }
+
+        .logo-traction {
+            display: inline-block;
+            font-weight: 700;
+            font-size: 0.9rem;
+            background: #ff6b35;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+
+        /* NAVIGATION TABS */
+        .tabs-container {
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid #e0e0e0;
+            overflow-x: auto;
+            background: #f9f9f9;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            background: #f9f9f9;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s ease;
+            border-bottom: 4px solid transparent;
+            min-width: 200px;
+        }
+
+        .tab-button:hover {
+            background: #f0f0f0;
+            color: #0066cc;
+        }
+
+        .tab-button.active {
+            color: #0066cc;
+            background: white;
+            border-bottom-color: #0066cc;
+        }
+
+        /* CONTENT SECTIONS */
+        .tab-content {
+            display: none;
+            padding: 40px 20px;
+            animation: fadeIn 0.4s ease-in;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* PHASE HEADER */
+        .phase-header {
+            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border-left: 6px solid #ff6b35;
+        }
+
+        .phase-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .phase-header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* SECTION DIVIDERS */
+        .section-divider {
+            display: flex;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .section-divider > div {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* CARD STYLES */
+        .card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: #0066cc;
+            box-shadow: 0 8px 24px rgba(0, 102, 204, 0.12);
+        }
+
+        .card h3 {
+            color: #0066cc;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h4 {
+            color: #1a1a1a;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #555;
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .card ul, .card ol {
+            margin-left: 20px;
+            color: #555;
+        }
+
+        .card li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        /* ACCENT COLORS */
+        .accent-orange {
+            color: #ff6b35;
+            font-weight: 700;
+        }
+
+        .accent-blue {
+            color: #0066cc;
+            font-weight: 700;
+        }
+
+        /* BADGE STYLES */
+        .badge {
+            display: inline-block;
+            background: #0066cc;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .badge-orange {
+            background: #ff6b35;
+        }
+
+        .badge-success {
+            background: #2d8659;
+        }
+
+        /* METRICS GRID */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .metric-box {
+            background: linear-gradient(135deg, #f0f7ff 0%, #f9f0ff 100%);
+            border-left: 5px solid #0066cc;
+            padding: 25px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .metric-box.orange {
+            border-left-color: #ff6b35;
+            background: linear-gradient(135deg, #fff5f0 0%, #fffaf8 100%);
+        }
+
+        .metric-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #0066cc;
+            margin-bottom: 8px;
+        }
+
+        .metric-box.orange .metric-value {
+            color: #ff6b35;
+        }
+
+        .metric-label {
+            font-size: 0.95rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            background: #f9f9f9;
+            border-radius: 6px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            gap: 12px;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-top: 4px;
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            accent-color: #0066cc;
+        }
+
+        .checklist-item label {
+            cursor: pointer;
+            color: #555;
+            flex: 1;
+        }
+
+        /* DOWNLOAD BUTTON */
+        .download-btn {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            margin: 15px 0;
+        }
+
+        .download-btn:hover {
+            background: #e55a24;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(255, 107, 53, 0.25);
+        }
+
+        .download-btn-secondary {
+            background: #0066cc;
+        }
+
+        .download-btn-secondary:hover {
+            background: #004499;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: #ff6b35;
+            border-radius: 50%;
+            border: 3px solid #0066cc;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 12px;
+            width: 2px;
+            height: calc(100% + 18px);
+            background: #e0e0e0;
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .timeline-item h4 {
+            color: #0066cc;
+            margin-bottom: 8px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: #ff6b35;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .tab-button {
+                min-width: 150px;
+                padding: 15px 10px;
+                font-size: 0.9rem;
+            }
+
+            .phase-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .section-divider {
+                flex-direction: column;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* COPY INDICATOR */
+        .copy-indicator {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #2d8659;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(400px); }
+            to { transform: translateX(0); }
+        }
+
+        .copy-indicator.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TRACTION X</h1>
+        <p>Blueprint 90 Dias – Revenue Engineering</p>
+        <div class="logo-traction">GROWTH ARCHITECT</div>
+    </header>
+
+    <div class="tabs-container">
+        <button class="tab-button active" onclick="switchTab('intro')">Visão Geral</button>
+        <button class="tab-button" onclick="switchTab('phase1')">Phase 1: Diagnosis</button>
+        <button class="tab-button" onclick="switchTab('phase2')">Phase 2: Blueprint</button>
+        <button class="tab-button" onclick="switchTab('phase3')">Phase 3: Build</button>
+        <button class="tab-button" onclick="switchTab('phase4')">Phase 4: Transfer</button>
+    </div>
+
+    <!-- INTRO SECTION -->
+    <div id="intro" class="tab-content active">
+        <div class="container">
+            <div class="phase-header">
+                <h2>Blueprint 90 Dias – Caminho para Receita Previsível</h2>
+                <p>Transforme caos em engenharia. Estrutura modular para SaaS, Tech, Varejo B2B, Agências, HR Tech e qualquer empresa B2B.</p>
+            </div>
+
+            <div class="card">
+                <h3>🎯 Por que este Blueprint?</h3>
+                <p>80% das metas B2B falham por falta de roadmap claro. Este não é mais um. É a máquina de prever receita.</p>
+                <ul>
+                    <li><strong>Fase 1 – Diagnosis:</strong> Auditamos a verdade. Dados, processo, stack.</li>
+                    <li><strong>Fase 2 – Blueprint:</strong> Desenhamos OKRs, SLAs, cadências. 90 dias em milhas de ação.</li>
+                    <li><strong>Fase 3 – Build:</strong> Entramos na trincheira. Dashboards live, automação, limpeza de dados.</li>
+                    <li><strong>Fase 4 – Transfer:</strong> Playbooks pra você rodar sozinho. Legado, não dependência.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>📊 Resultados Esperados</h3>
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <div class="metric-value">+25%</div>
+                        <div class="metric-label">Precisão de Forecasts</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-value">-40%</div>
+                        <div class="metric-label">Ciclo de Vendas</div>
+                    </div>
+                    <div class="metric-box orange">
+                        <div class="metric-value">+35%</div>
+                        <div class="metric-label">Leads Qualificados</div>
+                    </div>
+                    <div class="metric-box orange">
+                        <div class="metric-value">3x</div>
+                        <div class="metric-label">ROI em 6 meses</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🔧 Como usar este Blueprint</h3>
+                <p>Este documento é um <span class="accent-orange">camaleão</span>. Adapta-se a:</p>
+                <ul>
+                    <li><strong>SaaS:</strong> Foco em ARR, NRR, customer retention.</li>
+                    <li><strong>Tech:</strong> Ciclos longos, múltiplas linhas de decisão.</li>
+                    <li><strong>Varejo B2B:</strong> Volume, repetição, automação.</li>
+                    <li><strong>Agências:</strong> Project-based, retainer, pipeline de propostas.</li>
+                    <li><strong>HR Tech:</strong> Vendas consultivas, compliance, proof-of-concept.</li>
+                </ul>
+                <p style="margin-top: 20px;"><strong>Instrução:</strong> Em cada fase, você verá 3 abas: Atividades, Métricas, Checklist. Download os templates para sua empresa.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHASE 1: DIAGNOSIS -->
+    <div id="phase1" class="tab-content">
+        <div class="container">
+            <div class="phase-header">
+                <h2>Phase 1: Deep Diagnosis</h2>
+                <p>Semanas 1-3. Auditamos a verdade: dados, processo, people, platform.</p>
+            </div>
+
+            <div class="section-divider">
+                <div>
+                    <div class="card">
+                        <h3>📋 Atividades Principais</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h4>Semana 1: Auditoria de Dados</h4>
+                                <p>✓ Mapeie qualidade do CRM (duplicatas, campos vazios, dados podres)</p>
+                                <p>✓ Defina ICP atual vs. real</p>
+                                <p>✓ Analise churn e win/loss reasons</p>
+                                <p>✓ Entreviste Sales, Marketing, Success</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>Semana 2: Process & Stack Audit</h4>
+                                <p>✓ Mapeie fluxo de vendas (prospecção → fechamento)</p>
+                                <p>✓ Avalie SLAs (resposta, follow-up, handoff)</p>
+                                <p>✓ Analise ferramentas (CRM, email, call center, analytics)</p>
+                                <p>✓ Identifique gargalos e redundâncias</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>Semana 3: Gap Analysis & Report</h4>
+                                <p>✓ Resuma achados em 5 categorias: People, Process, Data, Platform, Metrics</p>
+                                <p>✓ Score de maturidade RevOps (1-10)</p>
+                                <p>✓ Listar top 3 quick wins imediatos</p>
+                                <p>✓ Propor 90-day roadmap com prioridades</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="card">
+                        <h3>📊 Métricas & KPIs</h3>
+                        <h4>Coleta de Baseline (Semana 1-3)</h4>
+                        <p><span class="accent-blue">Pipeline:</span></p>
+                        <ul>
+                            <li>Total de oportunidades abertas</li>
+                            <li>Pipeline por stage (prospect, qualified, proposal, negociação)</li>
+                            <li>Win rate histórico</li>
+                            <li>Ciclo de vendas (média)</li>
+                        </ul>
+                        <p><span class="accent-blue">Data Quality Score:</span></p>
+                        <ul>
+                            <li>% de registros completos no CRM</li>
+                            <li>% de duplicatas identificadas</li>
+                            <li>% de contatos com email válido</li>
+                            <li>% de oportunidades com valor > 0</li>
+                        </ul>
+                        <p><span class="accent-blue">Engagement:</span></p>
+                        <ul>
+                            <li>Taxa de resposta a outbound</li>
+                            <li>Tempo médio de first response (dias)</li>
+                            <li>Meetings agendados / leads</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>✅ Checklist – Phase 1</h3>
+                <div class="checklist">
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Data Audit:</strong> Quantificou duplicatas, dados vazios, registros órfãos?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>ICP Mapping:</strong> Definiu ICPs por verticais (ex: SaaS B2B, 10-500 employees, LATAM)?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Process Mapping:</strong> Mapeou cada etapa vendas (lead → cliente → advocacy)?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>SLAs:</strong> Documentou tempo máximo resposta, follow-up, handoff?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Stack Audit:</strong> Listou todas ferramentas (CRM, email, automação, analytics)?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Baseline Metrics:</strong> Coletou KPIs atuais (pipeline, win rate, ciclo, CAC)?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Entrevistas:</strong> Coletou perspectivas de Sales, Marketing, Success, Ops?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Report:</strong> Compilou gap analysis em documento executivo?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Quick Wins:</strong> Identificou 3 ações imediatas (próximas 2 semanas)?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Roadmap:</strong> Propôs 90-day roadmap com fases, responsáveis, entregas?</label>
+                    </div>
+                </div>
+            </div>
+
+            <button class="download-btn" onclick="downloadTemplate('phase1')">📥 Download Template Phase 1</button>
+        </div>
+    </div>
+
+    <!-- PHASE 2: BLUEPRINT -->
+    <div id="phase2" class="tab-content">
+        <div class="container">
+            <div class="phase-header">
+                <h2>Phase 2: Strategy Blueprint</h2>
+                <p>Semanas 4-8. Desenha OKRs, SLAs, cadências. Plano arquitetado para escala.</p>
+            </div>
+
+            <div class="section-divider">
+                <div>
+                    <div class="card">
+                        <h3>🎯 Atividades Principais</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h4>Semana 4-5: OKRs & Targets</h4>
+                                <p>✓ Defina OKR principal (ex: +30% revenue YoY)</p>
+                                <p>✓ Breakdown em key results (pipeline, win rate, CAC payback)</p>
+                                <p>✓ Mappe OKRs por time (Sales, Marketing, Success)</p>
+                                <p>✓ Crie sprints semanais de acompanhamento</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>Semana 6: SLAs & Playbooks</h4>
+                                <p>✓ Draft SLA Marketing → Sales (lead quality, resposta time)</p>
+                                <p>✓ Draft SLA Sales → Success (handoff, onboarding)</p>
+                                <p>✓ Defina cadências de outbound (emails, calls, sequências)</p>
+                                <p>✓ Template de proposta, contract, follow-up</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>Semana 7-8: Dashboard & Alerts</h4>
+                                <p>✓ Desenhe dashboard RevOps (pipeline, forecasts, KPIs)</p>
+                                <p>✓ Configure alertas automáticos (pipeline at risk, leads cold)</p>
+                                <p>✓ Defina weekly review rhythm com lideranças</p>
+                                <p>✓ Aligned com ciclo de previsão (mensal, trimestral)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="card">
+                        <h3>📊 Métricas & Targets</h3>
+                        <h4>OKR Template (Preencha seus números)</h4>
+                        <p><span class="accent-blue">Objective:</span> [Ex: Escalar revenue para $5M ARR]</p>
+                        <p><span class="accent-blue">Key Results:</span></p>
+                        <ul>
+                            <li>Pipeline: $____ (target) vs $____ (baseline)</li>
+                            <li>Win Rate: ___% (target) vs ___% (baseline)</li>
+                            <li>Sales Cycle: ___ dias (target) vs ___ (baseline)</li>
+                            <li>CAC Payback: ___ meses (target) vs ___ (baseline)</li>
+                            <li>NRR/Retention: ___% (SaaS/Subscription)</li>
+                        </ul>
+                        <h4>Weekly KPIs (Dashboard em tempo real)</h4>
+                        <ul>
+                            <li>Pipeline total + por stage</li>
+                            <li>Forecast vs. realizado</li>
+                            <li>Oportunidades ganha/perdida</li>
+                            <li>Leads qualificados</li>
+                            <li>Tempo resposta médio</li>
+                            <li>Conversão por stage</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>✅ Checklist – Phase 2</h3>
+                <div class="checklist">
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>OKR Primary:</strong> Definiu 1 OKR principal + 4-6 key results?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Cascata:</strong> Cascateou OKRs para cada time (Sales, Marketing, Success, Ops)?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>SLA Marketing-Sales:</strong> Documentou lead quality criteria, response time SLA?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>SLA Sales-Success:</strong> Definiu handoff criteria, onboarding timelines?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Cadências:</strong> Criou templates de outbound (email, call sequences)?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Dashboard:</strong> Desenhou RevOps dashboard com 8-12 KPIs principais?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Alertas:</strong> Configurou alertas automáticos para desvios?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Weekly Cadence:</strong> Agendou weekly reviews com CRO/VP Sales?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Forecasting:</strong> Setup forecast methodology (probabilístico, pipeline-based)?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Aprovação:</strong> Blueprint aprovado por CEO/CRO/CMO?</label>
+                    </div>
+                </div>
+            </div>
+
+            <button class="download-btn" onclick="downloadTemplate('phase2')">📥 Download Template Phase 2</button>
+        </div>
+    </div>
+
+    <!-- PHASE 3: BUILD -->
+    <div id="phase3" class="tab-content">
+        <div class="container">
+            <div class="phase-header">
+                <h2>Phase 3: Rigorous Implementation</h2>
+                <p>Semanas 9-16. Na trincheira. Limpeza, automação, execução.</p>
+            </div>
+
+            <div class="section-divider">
+                <div>
+                    <div class="card">
+                        <h3>🔧 Atividades Principais</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h4>Semana 9-10: Data Cleanup</h4>
+                                <p>✓ Remove duplicatas no CRM (full merge)</p>
+                                <p>✓ Limpa campos obrigatórios (ICP, tag, value, decision makers)</p>
+                                <p>✓ Arquiva leads mortos / oportunidades perdidas</p>
+                                <p>✓ Valida emails, telefones, domínios</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>Semana 11-12: Process & Automation</h4>
+                                <p>✓ Cria workflows de lead scoring (lead → MQL → SQL)</p>
+                                <p>✓ Automação: lead → assign sales rep → first contact em 4 horas</p>
+                                <p>✓ Setup cadência outbound (email + call sequences)</p>
+                                <p>✓ Template de proposta automática + e-signature</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>Semana 13-14: Dashboard & Reporting</h4>
+                                <p>✓ Build live dashboard (CRM native ou Tableau/Looker)</p>
+                                <p>✓ Daily standup: pipeline, forecast, risks</p>
+                                <p>✓ Weekly board: KPI review vs OKR target</p>
+                                <p>✓ Monthly forecast refinement</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>Semana 15-16: Optimization & Proof</h4>
+                                <p>✓ A/B testing: cadências, subject lines, pitch angles</p>
+                                <p>✓ Análise win/loss na realidade</p>
+                                <p>✓ Refinamento de ICP baseado em dados</p>
+                                <p>✓ Quick wins: primeiras closes com novo processo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="card">
+                        <h3>📊 Métricas & Entregáveis</h3>
+                        <h4>Limpeza de Dados</h4>
+                        <ul>
+                            <li>Duplicatas removidas: ____</li>
+                            <li>Registros ativos (antes/depois): ____ → ____</li>
+                            <li>Data quality score: ____% → ____% (target: 95%+)</li>
+                            <li>Lead scoring implemented: _____ leads qualified</li>
+                        </ul>
+                        <h4>Automação & Processos</h4>
+                        <ul>
+                            <li>Lead-to-SQL time: ___ dias → ___ horas</li>
+                            <li>First response time: ___ → ___ minutos</li>
+                            <li>Workflow automations criadas: ____</li>
+                            <li>Template adoption rate: ____%</li>
+                        </ul>
+                        <h4>Dashboard & Insights</h4>
+                        <ul>
+                            <li>KPIs tracked em tempo real: ____</li>
+                            <li>Forecast accuracy (vs. realizado): ___%</li>
+                            <li>Pipeline visibility: ___% oportunidades com próx. passo claro</li>
+                            <li>Deals at risk identificadas: ____ (alerts)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>✅ Checklist – Phase 3</h3>
+                <div class="checklist">
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>CRM Cleaning:</strong> Removeu todas duplicatas e dados podres?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Data Enrichment:</strong> Adicionou dados missing (email, telefone, company)?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Lead Scoring:</strong> Implementou scoring model (lead → MQL → SQL)?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Workflows:</strong> Criou automações key (assignment, alert, follow-up)?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Cadências:</strong> Livrou cadência de outbound (emails + calls)?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Templates:</strong> Template de proposta, follow-up, closing email pronto?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Dashboard:</strong> Dashboard live com 10+ KPIs atualizando em tempo real?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Daily Standup:</strong> Daily sync com pipeline, forecast, at-risk deals?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Weekly Review:</strong> Weekly board review vs OKR targets?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Forecast Refinement:</strong> Monthly forecast accuracy check e ajuste?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Proof Points:</strong> Primeiras closes com novo processo documentadas?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Training:</strong> Sales team treinada nos novos processos e templates?</label>
+                    </div>
+                </div>
+            </div>
+
+            <button class="download-btn" onclick="downloadTemplate('phase3')">📥 Download Template Phase 3</button>
+        </div>
+    </div>
+
+    <!-- PHASE 4: TRANSFER -->
+    <div id="phase4" class="tab-content">
+        <div class="container">
+            <div class="phase-header">
+                <h2>Phase 4: Transfer & Legacy</h2>
+                <p>Semanas 17-20. Documentação, enablement, handoff perfeito.</p>
+            </div>
+
+            <div class="section-divider">
+                <div>
+                    <div class="card">
+                        <h3>📚 Atividades Principais</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h4>Semana 17: Documentation & Playbooks</h4>
+                                <p>✓ Playbook de vendas (ICP, pitch, objeção handling)</p>
+                                <p>✓ Runbook de processos (daily, weekly, monthly cadence)</p>
+                                <p>✓ Dashboard user guide (como ler, que ações tomar)</p>
+                                <p>✓ CRM hygiene checklist (limpeza mensal)</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>Semana 18: Team Training</h4>
+                                <p>✓ Sales team: Pitch, ICP, SLAs, workflow</p>
+                                <p>✓ Marketing team: Lead scoring, SLA, quality criteria</p>
+                                <p>✓ Success team: Handoff protocol, retention KPIs</p>
+                                <p>✓ Ops team: Dashboard, forecasting, reporting</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>Semana 19: Metrics Handoff & Ownership</h4>
+                                <p>✓ Atribua ownership de KPIs (Sales Lead, Marketing Lead, Ops Lead)</p>
+                                <p>✓ Define cadência de governance (weekly, monthly, quarterly)</p>
+                                <p>✓ Setup alerts automáticos (desvios de target)</p>
+                                <p>✓ Treinamento em scenario planning</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>Semana 20: Final Review & Optimization</h4>
+                                <p>✓ Results review: Baseline vs. 90-day results</p>
+                                <p>✓ Gaps identificadas + plano de ação Q2</p>
+                                <p>✓ Tech stack optimization (consolidar ferramentas?)</p>
+                                <p>✓ Roadmap de evolução (previsão preditiva, AI)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="card">
+                        <h3>📊 Resultados Finais</h3>
+                        <h4>Métricas de Sucesso (Compare antes/depois)</h4>
+                        <div class="metrics-grid">
+                            <div class="metric-box">
+                                <div class="metric-label">Baseline</div>
+                                <div class="metric-value" style="font-size: 1.5rem;">-</div>
+                            </div>
+                            <div class="metric-box">
+                                <div class="metric-label">Day 90</div>
+                                <div class="metric-value" style="font-size: 1.5rem;">+</div>
+                            </div>
+                        </div>
+                        <h4>Documentação Entregue</h4>
+                        <ul>
+                            <li>✓ Playbook de Vendas (ICP, pitch, sequências)</li>
+                            <li>✓ Runbook de Processos (daily/weekly/monthly)</li>
+                            <li>✓ Dashboard User Guide (interpretação de dados)</li>
+                            <li>✓ CRM Hygiene Checklist (limpeza contínua)</li>
+                            <li>✓ OKR & KPI Ownership Matrix</li>
+                            <li>✓ Training Videos (DIY)</li>
+                            <li>✓ Q2+ Roadmap (evolução contínua)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>✅ Checklist – Phase 4</h3>
+                <div class="checklist">
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Playbook de Vendas:</strong> Documentou ICP, pitch deck, objeção handling, closing tactics?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Runbook de Processos:</strong> Daily standup, weekly board, monthly forecast, quarterly review?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Dashboard Guide:</strong> Como ler dashboard, que ações tomar por métrica?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>CRM Hygiene:</strong> Checklist mensal de limpeza (duplicatas, campos, arquivos)?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>KPI Ownership:</strong> Cada métrica tem proprietário claro + cadência review?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Sales Training:</strong> Team treinada em novo pitch, ICP, SLA, workflow?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Marketing Training:</strong> Team entende lead scoring, SLA, quality criteria?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Success Training:</strong> Team sabe handoff protocol, retention KPIs?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Ops Training:</strong> Team pode rodar dashboard, forecasting, reporting solo?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Results Review:</strong> Comparou baseline vs. Day 90 resultados?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Q2+ Roadmap:</strong> Próximos passos (AI, previsão preditiva, automação)?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox">
+                        <label><strong>Sign-off:</strong> CEO/CRO assinou para handoff completo?</label>
+                    </div>
+                </div>
+            </div>
+
+            <button class="download-btn" onclick="downloadTemplate('phase4')">📥 Download Template Phase 4</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>TRACTION X – Revenue Engineering Blueprint 90 Dias</p>
+        <p>Documento modular para SaaS, Tech, Varejo B2B, Agências, HR Tech e qualquer B2B</p>
+        <p>© 2026 TRACTION X | <a href="#">www.tractionx.com</a></p>
+    </footer>
+
+    <div class="copy-indicator" id="copyIndicator">✓ Template copiado!</div>
+
+    <script>
+        function switchTab(tabName) {
+            // Hide all content
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+            
+            // Show selected content and activate button
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function downloadTemplate(phase) {
+            const templates = {
+                phase1: `PHASE 1: DEEP DIAGNOSIS – TEMPLATE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## DATA AUDIT
+Total registros no CRM: ____
+Duplicatas identificadas: ____ (% do total)
+Campos obrigatórios vazios:
+  - Email: ____% dos registros
+  - Telefone: ____% dos registros
+  - Company: ____% dos registros
+Data quality score: ____% (target: 90%+)
+
+## ICP MAPPING
+ICP Primário: _________________
+ICP Secundário: _________________
+Por verticais (coloque sua empresa em cada um):
+  - Verticais atuais: __________________
+  - Verticais alvo: __________________
+
+## PROCESS AUDIT
+Etapas do funil:
+  1. ________________
+  2. ________________
+  3. ________________
+  4. ________________
+
+SLA Tempos de Resposta:
+  - Lead inbound → Sales contact: ___ horas
+  - Lead outbound → Follow-up: ___ dias
+  - Proposal → Fechamento: ___ dias
+
+## STACK AUDIT
+CRM: ____________________
+Email platform: ____________________
+Automação (marketing): ____________________
+Call system: ____________________
+Analytics: ____________________
+Gaps/redundâncias: ____________________
+
+## BASELINE METRICS
+Pipeline total: $____
+Win rate: ____%
+Ciclo vendas (média): ___ dias
+CAC: $_____
+Leads qualificados/mês: ____
+
+## QUICK WINS (Next 2 weeks)
+1. ____________________________
+2. ____________________________
+3. ____________________________
+
+## 90-DAY ROADMAP
+Phase 1 (Weeks 1-3): ______________________
+Phase 2 (Weeks 4-8): ______________________
+Phase 3 (Weeks 9-16): ______________________
+Phase 4 (Weeks 17-20): ______________________`,
+
+                phase2: `PHASE 2: STRATEGY BLUEPRINT – TEMPLATE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## PRIMARY OKR
+Objective: ____________________________
+   (ex: Escalar para $5M ARR / +30% YoY growth)
+
+Key Results:
+ 1. Pipeline: $____ (target) vs $____ (baseline) = +____%
+ 2. Win rate: ___% (target) vs ___% (baseline) = +____%
+ 3. Sales cycle: ___ dias (reduction)
+ 4. CAC payback: ___ months
+ 5. NRR/Retention: ___% (SaaS-specific)
+
+## SLA MARKETING-SALES
+Lead quality criteria (MQL):
+  - Industry: ______
+  - Company size: ______
+  - Budget signal: ______
+  - Engagement score: _____ (0-10)
+
+Response time SLA:
+  - Inbound leads: ___ minutes
+  - Outbound: ___ hours
+  - Penalty: ________________
+
+## SLA SALES-SUCCESS
+Handoff criteria (SQL → Customer):
+  - Contract signed
+  - Payment received
+  - Kickoff scheduled
+  - Onboarding plan shared
+
+Time to value (first result): ___ days
+
+## CADENCE TEMPLATES
+Outbound email sequence:
+  Email 1 (Day 0): ___________________
+  Email 2 (Day 3): ___________________
+  Email 3 (Day 7): ___________________
+  Call slots: ________________
+
+## DASHBOARD KPIs (Weekly)
+ 1. ________________ (owner: _______)
+ 2. ________________ (owner: _______)
+ 3. ________________ (owner: _______)
+ 4. ________________ (owner: _______)
+ 5. ________________ (owner: _______)
+
+## GOVERNANCE RHYTHM
+Daily standup: _____ @ _____ AM
+Weekly board: _____ @ _____ AM
+Monthly forecast: _____ @ _____ AM
+Quarterly review: _____ @ _____ AM`,
+
+                phase3: `PHASE 3: RIGOROUS IMPLEMENTATION – TEMPLATE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## WEEKS 9-10: DATA CLEANUP TRACKER
+Task                           Status    Owner      Due
+─────────────────────────────────────────────────────
+Duplicate removal              ☐ Done   _______    ___
+Email validation               ☐ Done   _______    ___
+Company data enrichment        ☐ Done   _______    ___
+ICP tagging                    ☐ Done   _______    ___
+Archive dead leads             ☐ Done   _______    ___
+
+Data quality before: ____%
+Data quality after: ____% (target: 95%+)
+
+## WEEKS 11-12: AUTOMATION BUILD
+Workflow                       Status    Tool       Owner
+─────────────────────────────────────────────────────
+Lead scoring                   ☐ Built  _______    _______
+Lead assignment                ☐ Built  _______    _______
+First touch alert              ☐ Built  _______    _______
+Follow-up reminders            ☐ Built  _______    _______
+Proposal generation            ☐ Built  _______    _______
+
+## WEEKS 13-14: DASHBOARD METRICS
+KPI                            Baseline Day 90    +/- Change
+─────────────────────────────────────────────────────
+Pipeline                       $____    $____     +____
+Win rate                       ____%    _____%    +____%
+Sales cycle                    ___ days ___ days -___ days
+Forecast accuracy              ____%    _____%    +____%
+
+## WEEKS 15-16: OPTIMIZATION
+A/B Test                       Control   Variant  Winner
+─────────────────────────────────────────────────────
+Email subject line             ____      ____     ✓
+Call timing                    ____      ____     ✓
+Proposal template              ____      ____     ✓
+
+Quick wins (deals won):
+ 1. Deal: _________ | Size: $____ | Closed: __/__
+ 2. Deal: _________ | Size: $____ | Closed: __/__
+
+## TRAINING COMPLETION
+[ ] Sales team trained
+[ ] Marketing team trained
+[ ] Success team trained
+[ ] Ops team trained
+[ ] Executives briefed`,
+
+                phase4: `PHASE 4: TRANSFER & LEGACY – TEMPLATE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## DELIVERABLES CHECKLIST
+[ ] Playbook de Vendas (PDF/Doc)
+[ ] Runbook de Processos (PDF/Doc)
+[ ] Dashboard User Guide (PDF/Doc)
+[ ] CRM Hygiene Checklist (PDF/Doc)
+[ ] KPI Ownership Matrix (Spreadsheet)
+[ ] Training videos (3-5 videos)
+[ ] Q2+ Roadmap (Presentation)
+
+## RESULTS REVIEW: BASELINE vs. DAY 90
+
+Metric                 Baseline   Day 90    Change   Goal Met?
+─────────────────────────────────────────────────────────
+Pipeline               $____      $____     +____%   ☐ ✓
+Win rate               ____%      _____%    +____%   ☐ ✓
+Sales cycle            ___ days   ___ days  -____    ☐ ✓
+CAC payback            ___ mo     ___ mo    -____    ☐ ✓
+Leads qualified        ____       ____      +____    ☐ ✓
+Forecast accuracy      ____%      _____%    +____%   ☐ ✓
+
+## KPI OWNERSHIP MATRIX
+KPI                    Owner           Cadence     Target
+────────────────────────────────────────────────────
+Pipeline               ________        Weekly      $_____
+Win rate               ________        Weekly      ____%
+Forecast accuracy      ________        Monthly     ____%
+Customer retention     ________        Monthly     ____%
+Lead quality           ________        Weekly      ____%
+
+## Q2+ ROADMAP
+Next Focus Areas:
+ 1. ____________________________
+ 2. ____________________________
+ 3. ____________________________
+
+Technology upgrades:
+ 1. ____________________________
+ 2. ____________________________
+
+AI/Predictive initiatives:
+ 1. ____________________________
+
+## SIGN-OFF
+CEO: __________________ Date: __/__/__
+CRO: __________________ Date: __/__/__
+CMO: __________________ Date: __/__/__`
+            };
+
+            const template = templates[phase] || 'Template não encontrado';
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(template).then(() => {
+                showCopyIndicator();
+            });
+        }
+
+        function showCopyIndicator() {
+            const indicator = document.getElementById('copyIndicator');
+            indicator.classList.add('show');
+            setTimeout(() => {
+                indicator.classList.remove('show');
+            }, 2000);
+        }
+
+        // Set initial active tab
+        window.addEventListener('load', () => {
+            switchTab('intro');
+        });
+    </script>
+</body>
+</html>
